@@ -30,7 +30,7 @@ Build vue custom component:
 #### In HA /config/www/ create these 2 files:
    * lit-element-card.js. 
       * this is a wrapper element for vue custom component
-      * here c/p content of /connectorHA/lit-custom-card.js
+      * here c/p content of /connectorHA/lit-custom-card.js and delete connectorHA dir from cloned repository, it wont be used here
 
    * vue-custom-card.js
       * here c/p output of HACustomCard.vue build from dist/main.js
