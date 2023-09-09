@@ -1,5 +1,5 @@
 
-# Vue 3 Home Assistant Lovelace custom component 
+# Vue 3 Home Assistant Lovelace Custom Component AND Connector
 
 ### IMPORTANT NOTESS:
    * development is separated from HA server and vue cli is not required to be installed on HA server
