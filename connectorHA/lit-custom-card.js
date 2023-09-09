@@ -27,7 +27,7 @@ class VueWrapper extends LitElement {
 
     render() {
         return html`
-        <div id="iva-card">
+        <div>
             ${this.config.testProp !== undefined ? html`
                 <vue-custom-card
                 .config=${JSON.stringify(this.config)}
@@ -43,7 +43,7 @@ window.customCards = window.customCards || [];
 window.customCards.push({
     type: 'lit-custom-card',
     name: 'Room Card by Iva',
-    preview: true,//todo check if needs to be - was first false
+    preview: true,
     description: 'LitElement wrapper element for vue.js to be used in Home Assistant',
 });
 
