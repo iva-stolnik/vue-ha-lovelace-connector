@@ -1,35 +1,43 @@
-# custom_room_card
 
-This template should help get you started developing with Vue 3 in Vite.
+# Vue 3 Home Assistant Lovelace custom component 
 
-## Recommended IDE Setup
+### IMPORTANT NOTESS:
+   * development is separated from HA server and vue cli is not required to be installed on server
+   * /local/ is /config/www/ directory in HA
+   * /config/www/ is exposed to lovelace dashboard, it's starting point on HA server
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+#### Clone project anywhere you prefer and run:
 
 ```sh
-npm install
+   npm install
+   npm run dev
 ```
+* HACustomCard.vue is entry point. 
 
-### Compile and Hot-Reload for Development
 
+Build vue custom component:
 ```sh
-npm run dev
+   npm run build
 ```
+   * output in dist/ dir will be used in Home Assistant
 
-### Compile and Minify for Production
+### Home Aassistant setup:
+#### In HA /config/www/ create these 2 files:
+   * lit-element-card.js. 
+   * vue-custom-card.js
+      * here c/p output of HACustomCard.vue build from dist/main.js
 
+#### In HA /config/www/ create these 2 files:
+   * open dashboards -> 3 dots in right corner -> resources -> ADD RESOURCES
+   * setup paths for both components: 
 ```sh
-npm run build
+   /local/lit-element-card.js // for litElement component
+   /local/vue-custom-card.js // for Vue component
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+   * setup resource type to JS module for both components
+   * on your dashboard create new card -> show code editor and paste:
+   ```sh
+      someProp: You did it legend :)
+   ```
+   * save card -> exit dashboard editor

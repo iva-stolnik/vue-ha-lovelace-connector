@@ -2,16 +2,16 @@
   "name": "custom_room_card",
   "version": "0.0.0",
   "private": true,
+  "author": "Iva Stolnik",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "buildHA": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
-  },  
+  },
   "dependencies": {
-    "vue": "^3.3.4",
-    "vue-custom-element": "^3.3.0"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.1",
