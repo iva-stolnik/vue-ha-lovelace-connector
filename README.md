@@ -2,7 +2,7 @@
 # Vue 3 Home Assistant Lovelace custom component 
 
 ### IMPORTANT NOTESS:
-   * development is separated from HA server and vue cli is not required to be installed on server
+   * development is separated from HA server and vue cli is not required to be installed on HA server
    * /local/ is /config/www/ directory in HA
    * /config/www/ is exposed to lovelace dashboard, it's starting point on HA server
 
