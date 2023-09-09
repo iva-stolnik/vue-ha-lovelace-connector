@@ -9,7 +9,7 @@
         - this retrieves config from lovelace card yaml
         - LitElement is othervise dumb and serves only as a wrapper for vue component that passes config
         - whole state management and comunication can be done in vue component
-        - access to Home Assistant state from HA api or socket...
+        - access Home Assistant state from HA api or socket...
 
 #### Clone project anywhere you prefer and run:
 
@@ -35,7 +35,7 @@ Build vue custom component:
    * vue-custom-card.js
       * here c/p output of HACustomCard.vue build from dist/main.js
 
-#### In HA /config/www/ create these 2 files:
+#### Setup dashboard:
    * open dashboards -> 3 dots in right corner -> resources -> ADD RESOURCES
    * setup paths for both components: 
 ```sh
