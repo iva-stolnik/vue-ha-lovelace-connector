@@ -5,7 +5,7 @@
    * development is separated from HA server and vue cli is not required to be installed on HA server
    * /local/ is /config/www/ directory in HA
    * /config/www/ is exposed to lovelace dashboard, it's starting point on HA server
-   * Idea is to use LitElement to get access its setConfig method (lovelace requirement)
+   * Idea is to use LitElement to get access to its setConfig method (lovelace requirement)
         - this retrieves config from lovelace card yaml
         - LitElement is othervise dumb and serves only as a wrapper for vue component that passes config
         - whole state management and comunication can be done in vue component
