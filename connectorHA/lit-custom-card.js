@@ -42,9 +42,9 @@ window.customCards = window.customCards || [];
 
 window.customCards.push({
     type: 'lit-custom-card',
-    name: 'Room Card by Iva',
+    name: 'LitElement Custom Card',
     preview: true,
-    description: 'LitElement wrapper element for vue.js to be used in Home Assistant',
+    description: 'LitElement wrapper for vue.js component',
 });
 
 customElements.define("lit-custom-card", VueWrapper);
