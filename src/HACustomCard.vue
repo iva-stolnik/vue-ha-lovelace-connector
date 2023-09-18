@@ -6,13 +6,20 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
+import { devConfig } from '../devConfig'
 
 export default defineComponent({
 props: {
   config: Object,
 },
 setup(props) {  
-  const configIn = ref(JSON.parse(props.config));
+  const configIn = ref({});
+  try {
+        configIn.value = ref(JSON.parse(props.config));  
+    }
+    catch {
+        configIn.value = ref(devConfig);  
+    }
 
   return {
       configIn

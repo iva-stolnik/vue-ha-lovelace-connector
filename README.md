@@ -48,7 +48,8 @@ Build vue custom component:
    * setup resource type to JS module for both components
    * on your dashboard create new card -> show code editor -> paste following:
    ```sh
-      someProp: You did it legend :)
+type: custom:lit-custom-card
+someProp: You did it legend :)
    ```
    * save card -> exit dashboard editor
 
