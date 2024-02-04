@@ -22,7 +22,7 @@
 
 Build vue custom component:
 ```sh
-   npm run build
+   npm run watch
 ```
    * output in dist/ dir will be used in Home Assistant
 

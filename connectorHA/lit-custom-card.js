@@ -8,6 +8,8 @@ const { html } = LitElement.prototype;
 class VueWrapper extends LitElement {
     constructor() {
         super();
+        // this.initialised = false; // for changed props option in updated()
+        this.hass = null;
         this.config = {};
     }
 
@@ -23,6 +25,30 @@ class VueWrapper extends LitElement {
             return;
         }
         this.config = config;
+    }
+
+     updated(/*changedProps*/) {
+        // this works only if there are not changed props
+        // triggered only once when hass is ready
+        this.triggerCustomEvent()
+
+        // this works for changed props
+        /* if (!this.initialised && changedProps.has('hass') && this.hass) {
+            // The hass object is now available and can be accessed here
+            // You can perform actions using this.hass
+            this.triggerCustomEvent()
+            this.initialised = true
+        }*/ 
+    }
+
+    async triggerCustomEvent() {
+        const event = new CustomEvent('custom-event-for-vue-card', {
+            detail: { hass: this.hass },
+        });
+
+        setTimeout(() => {
+            window.dispatchEvent(event);                
+        }, 1000);
     }
 
     render() {

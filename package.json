@@ -6,17 +6,17 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "buildHA": "vite build",
+    "watch": "vite build --watch",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.4.15"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.1",
+    "@vitejs/plugin-vue": "^5.0.3",
     "eslint": "^8.46.0",
     "eslint-plugin-vue": "^9.16.1",
-    "vite": "^4.4.9"
+    "vite": "^5.0.12"
   }
 }
