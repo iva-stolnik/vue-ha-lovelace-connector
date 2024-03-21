@@ -1,4 +1,9 @@
 
+# Project Title
+
+A brief description of what this project does and who it's for
+
+
 # Vue 3 Home Assistant Lovelace Custom Component AND Connector
 
 ### IMPORTANT NOTES:
@@ -48,8 +53,28 @@ Build vue custom component:
    * setup resource type to JS module for both components
    * on your dashboard create new card -> show code editor -> paste following:
    ```sh
+// basic yaml 
 type: custom:lit-custom-card
 someProp: You did it legend :)
+   ```
+   or
+   ```sh
+// yaml for native cards
+type: custom:lit-custom-card
+cards:
+  - type: light
+    entity: light.living_room_lights_group
+  - type: custom:mushroom-light-card
+    entity: light.office_lights_group
+    layout: horizontal
+    primary_info: none
+    secondary_info: none
+    use_light_color: true
+    show_brightness_control: true
+    show_color_control: true
+    show_color_temp_control: true
+    collapsible_controls: true
+    icon: mdi:lightbulb-group
    ```
    * save card -> exit dashboard editor
 

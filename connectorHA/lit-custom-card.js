@@ -19,8 +19,8 @@ class VueWrapper extends LitElement {
         yaml content for this examle:
             testProp: someValue
          */
-        if (!config.testProp) {
-            this.errorMessage = "You need to define testProp";
+        if (!config) {
+            this.errorMessage = "You need to define config";
             console.log(this.errorMessage)
             return;
         }
@@ -54,7 +54,7 @@ class VueWrapper extends LitElement {
     render() {
         return html`
         <div>
-            ${this.config.testProp !== undefined ? html`
+            ${this.config !== undefined ? html`
                 <vue-custom-card
                 .config=${JSON.stringify(this.config)}
                 ></vue-custom-card>
