@@ -8,7 +8,6 @@ const { html } = LitElement.prototype;
 class VueWrapper extends LitElement {
     constructor() {
         super();
-        // this.initialised = false; // for changed props option in updated()
         this.hass = null;
         this.config = {};
     }
@@ -16,8 +15,22 @@ class VueWrapper extends LitElement {
     setConfig(config) {
         /*
         config comes from card on HA lovelace dashboard
-        yaml content for this examle:
-            testProp: someValue
+        yaml content for this example: 
+            type: custom:lit-custom-card
+            cards:
+            - type: light
+                entity: light.living_room_lights_group
+            - type: custom:mushroom-light-card
+                entity: light.office_lights_group
+                layout: horizontal
+                primary_info: none
+                secondary_info: none
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+                show_color_temp_control: true
+                collapsible_controls: true
+                icon: mdi:lightbulb-group
          */
         if (!config) {
             this.errorMessage = "You need to define config";
@@ -27,28 +40,19 @@ class VueWrapper extends LitElement {
         this.config = config;
     }
 
-     updated(/*changedProps*/) {
-        // this works only if there are not changed props
-        // triggered only once when hass is ready
+    connectedCallback() {
+        super.connectedCallback();
         this.triggerCustomEvent()
-
-        // this works for changed props
-        /* if (!this.initialised && changedProps.has('hass') && this.hass) {
-            // The hass object is now available and can be accessed here
-            // You can perform actions using this.hass
-            this.triggerCustomEvent()
-            this.initialised = true
-        }*/ 
     }
-
+    
     async triggerCustomEvent() {
         const event = new CustomEvent('custom-event-for-vue-card', {
             detail: { hass: this.hass },
         });
-
+        
         setTimeout(() => {
             window.dispatchEvent(event);                
-        }, 1000);
+        }, 0);
     }
 
     render() {

@@ -1,45 +1,35 @@
 <template>
   <div>
-      <div ref="cardsContainer"></div>
+    <div ref="cardsContainer"></div>
   </div>
 </template>
 
 <script>
-import { defineComponent, onBeforeMount, ref } from 'vue';
-import { devConfig } from '../devConfig'
+import { defineComponent, onMounted, ref, onUnmounted } from 'vue';
+import { devConfig } from '../devConfig';
 
 export default defineComponent({
-props: {
-  config: Object,
-},
-setup(props) {  
-  let configIn;
-  const hass = ref(null);
-  const cardsContainer = ref(); 
+  props: {
+    config: Object,
+  },
+  setup(props) {
+    const cardsContainer = ref(); 
+    const hass = ref(null);
+    let configIn;
 
-  const getHass = (event) => {
-        window.removeEventListener('custom-event-for-vue-card', getHass);
-        // recieve whole hass object with its api, socket, services, entities...
-        hass.value = event.detail.hass
+    const getHass = (event) => {
+      if(!hass.value || (configIn.cards && cardsContainer.value?.childNodes.length))
+      {
+        hass.value = event.detail.hass;
 
-        // create elements from config.cards
-        if(configIn.value.cards)
+        if(configIn.cards && configIn.cards.length !== cardsContainer.value?.childNodes.length)
         {
-          const items = createNativeCards(configIn.value.cards);
-          items.forEach(card => {
-            cardsContainer.value.appendChild(card);
-          });
-        }
-    };
+          const items = configIn.cards;
 
-    window.addEventListener('custom-event-for-vue-card', getHass);   
-
-
-    const createNativeCards = (cardsConfig) => {
-      return cardsConfig.map((cardConfig) => {
+          items.forEach((cardConfig) => {        
             let tag = cardConfig.type;
 
-            // adjust if needed
+            // adjust card type if needed
             if (tag.includes('custom:'))
             {
               // custom:mushroom-light-card --> mushroom-light-card
@@ -55,21 +45,32 @@ setup(props) {
             cardElement.setConfig(cardConfig);
             cardElement.hass = hass.value;
 
-            return cardElement;
-        });
-    }  
+            if(cardsContainer.value)
+            {
+              cardsContainer.value.appendChild(cardElement);
+            }         
+          });
+        }      
+      }
+    };
+    
+    window.addEventListener('custom-event-for-vue-card', getHass);
 
-    onBeforeMount(()=>{
+    onMounted(() => {
       try {
-          configIn = ref(JSON.parse(props.config));  
+        configIn = JSON.parse(props.config);  
+      } catch {
+        configIn = devConfig;  
       }
-      catch {
-          configIn = ref(devConfig);  
-      }
-    })
-  return {
-      cardsContainer
-  };
-},
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('custom-event-for-vue-card', getHass);
+    });
+
+    return {
+      cardsContainer,
+    };
+  },
 });
 </script>
