@@ -1,5 +1,6 @@
-
 # Vue 3 Home Assistant Lovelace Custom Component AND Connector
+
+## For display of existing Home Assistant cards within a Vue custom component, check the 'dev' branch
 
 ### IMPORTANT NOTES:
    * development is separated from HA server and vue cli is not required to be installed on HA server
