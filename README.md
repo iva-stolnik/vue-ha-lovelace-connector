@@ -1,10 +1,4 @@
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
-
-# Vue 3 Home Assistant Lovelace Custom Component AND Connector
+# Vue 3 Home Assistant Lovelace Custom Component, Connector AND display of existing Home Assistant cards within a Vue custom component
 
 ### IMPORTANT NOTES:
    * development is separated from HA server and vue cli is not required to be installed on HA server
