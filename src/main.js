@@ -54,31 +54,15 @@ class VueCustomCard extends HTMLElement {
 
 window.customCards = window.customCards || [];
 
-if(window.customCards.length)
-{
-    let found = false;
-    for (const item of window.customCards)
-    {
-        if(item.type === 'vue-custom-card')
-        {
-            found = true;
-            break;
-        }
-    }
-    if(!found)
-    {
-        window.customCards.push({
-            type: 'vue-custom-card',
-            name: 'Vue Custom Card',
-            preview: true,
-            description: 'A custom card created in Vue 3',
-        });
-    }
+if (!window.customCards.some(card => card.type === 'vue-custom-card')) {
+    window.customCards.push({
+        type: 'vue-custom-card',
+        name: 'Vue Custom Card',
+        preview: true,
+        description: 'A custom card created in Vue 3',
+    });
 }
 
-
-
-if (!customElements.get('vue-custom-card')) {
-    
+if (!customElements.get('vue-custom-card')) {    
     customElements.define('vue-custom-card', VueCustomCard);
 }
