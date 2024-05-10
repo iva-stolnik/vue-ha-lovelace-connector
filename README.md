@@ -46,7 +46,7 @@ Build vue custom component:
    * setup resource type to JS module
    * on your dashboard create new card -> show code editor -> paste following:
    ```
-type: custom:lit-custom-card
+type: custom:vue-custom-card
 someProp: You did it legend :)
    ```
    * save card -> exit dashboard editor
