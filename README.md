@@ -1,5 +1,5 @@
 # Vue 3 Home Assistant Lovelace Custom Component AND Connector
-Create custom cards for HA with Vue!!
+Starter Project - create custom cards for HA with Vue!!
 
 ## For display of existing Home Assistant cards within a Vue custom component, check the 'dev' branch
 
