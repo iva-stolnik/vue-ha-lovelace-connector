@@ -9,14 +9,12 @@ export default defineConfig({
   ],
   build: {
     target: 'modules', // Change to 'es' if needed
-    outDir: 'dist', // Specify the output directory
+    outDir: '.', // Specify the output directory
     assetsDir: '', // Set to an empty string to prevent an additional assets directory
     rollupOptions: {
       input: 'src/main.js', // Modify this path accordingly
       output: {
-        entryFileNames: `[name].js`,
-        chunkFileNames: `[name].js`,
-        assetFileNames: `[name].[ext]`,
+        entryFileNames: `[name]_prod.js`,
       },
     },
   },
