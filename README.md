@@ -30,22 +30,19 @@ Build vue custom component:
    // or
    npm run build
 ```
-   * output in dist/ dir will be used in Home Assistant
-
 ### Home Aassistant setup:
-#### In HA /config/www/ create these 2 files:
-   * if using HACS skip this part
-   * vue-custom-card.js // or any other name
+   * If using via HACS skip this part
+   * In HA /config/www/ create file vue-custom-card.js // or any other name
       * here copy paste build output from `main_prod.js` after you run `npm run build`
 
-#### Setup dashboard:
-   * if using HACS skip this part also
+### Dashboard setup:
+   * if using via HACS skip this part also
    * open dashboards -> 3 dots in right corner -> resources -> ADD RESOURCES
-   * setup paths for new component: 
+   * setup path for new component: 
 ```
    /local/vue-custom-card.js // for Vue component
 ```
-   * setup resource type to JS module for both components
+   * setup resource type to JS module
    * on your dashboard create new card -> show code editor -> paste following:
    ```
 type: custom:lit-custom-card
