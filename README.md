@@ -11,7 +11,7 @@ Starter Project - create custom cards for HA with Vue!!
         - this retrieves config from lovelace card yaml
         - HTMLElement is othervise dumb and serves only as a wrapper for vue component that passes config
         - whole state management and comunication can be done in vue component
-        - pass whole `hass` object and utilize its functionality
+        - pass whole `hass` object and utilize its functionality: call service, API or WebSocket - [HomeAssistant interface](https://github.com/home-assistant/frontend/blob/dev/src/types.ts)
    * In case you want to use hacs.json and to be able to add **your new repository to HACS** as custom repo
         - hacs.json is already added to this repo
         - before commiting and pushing changes to git, run `npm run build`
