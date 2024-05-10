@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ha-card style="padding:1em;">
     <h1>Configuration</h1>
     <pre>{{configIn}}</pre>
     <h2>Status: {{haStatus}}</h2>
@@ -13,7 +13,7 @@
         Toggle Light (call websocket)
       </button>
     </div>
-  </div>
+  </ha-card>
 </template>
 
 <script>
