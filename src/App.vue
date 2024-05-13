@@ -1,15 +1,15 @@
 <template>
   <ha-card style="padding:1em;">
     <h1>Configuration</h1>
-    <pre>{{configIn}}</pre>
-    <h2>Status: {{haStatus}}</h2>
+    <pre>{{config}}</pre>
+    <h2>Status: {{hass.connected ? 'HA Connected' : 'No HA Connection'}}</h2>
     <div>
-      <button @click="callService('light', 'toggle', { entity_id: 'light.wl_office_1'})">
+      <button @click="callService('light', 'toggle', { entity_id: config.entity_id})">
         Toggle Light (call service)
       </button>
     </div>
     <div>
-      <button @click="callWebSocket('call_service', 'light', 'toggle', { entity_id: 'light.wl_office_1' })">
+      <button @click="callWebSocket('call_service', 'light', 'toggle', { entity_id: config.entity_id })">
         Toggle Light (call websocket)
       </button>
     </div>
@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
-import { devConfig } from '../devConfig'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
 props: {
@@ -26,8 +25,6 @@ props: {
   hass: Object
 },
 setup(props) {  
-  const configIn = ref({});
-  const haStatus = ref('')
   // Method to call a service
   const callService = (domain, service, serviceData) => {
     if (props.hass && props.hass.callService) {
@@ -53,24 +50,7 @@ setup(props) {
     }
   }
 
-
-  onMounted(()=>{
-    try {
-        configIn.value = ref(JSON.parse(props.config));  
-    }
-    catch {
-        configIn.value = ref(devConfig);  
-    }
-
-    if(props.hass)
-    {
-      haStatus.value = 'HA Connected'
-    }
-  }) 
-
   return {
-      configIn,
-      haStatus,
       callService,
       callWebSocket
   };
