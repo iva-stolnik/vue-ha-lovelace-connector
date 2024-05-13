@@ -48,6 +48,7 @@ Build vue custom component:
    ```
 type: custom:vue-custom-card
 someProp: You did it legend :)
+entity_id: your_light_entity
    ```
    * save card -> exit dashboard editor
 
